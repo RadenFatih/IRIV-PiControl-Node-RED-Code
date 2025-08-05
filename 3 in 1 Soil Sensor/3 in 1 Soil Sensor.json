@@ -1,0 +1,315 @@
+[
+    {
+        "id": "4cc2bbb2caacda4f",
+        "type": "tab",
+        "label": "3 in 1 Soil Sensor",
+        "disabled": true,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "857274da2919ad75",
+        "type": "inject",
+        "z": "4cc2bbb2caacda4f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 90,
+        "y": 280,
+        "wires": [
+            [
+                "297033e873ad1ea7"
+            ]
+        ]
+    },
+    {
+        "id": "297033e873ad1ea7",
+        "type": "modbus-getter",
+        "z": "4cc2bbb2caacda4f",
+        "name": "",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "logIOActivities": false,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "0",
+        "quantity": "3",
+        "server": "240d0a948d22ed88",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 260,
+        "y": 280,
+        "wires": [
+            [
+                "0abb05c70b13bcf4",
+                "9c28bf411684cb56",
+                "652790f35b277181"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "0abb05c70b13bcf4",
+        "type": "function",
+        "z": "4cc2bbb2caacda4f",
+        "name": "Moisture",
+        "func": "var msg = {payload: msg.payload[0]/10.0};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 140,
+        "wires": [
+            [
+                "2de40bd22dcbefaf",
+                "a5acf5314fdeebbf"
+            ]
+        ]
+    },
+    {
+        "id": "9c28bf411684cb56",
+        "type": "function",
+        "z": "4cc2bbb2caacda4f",
+        "name": "Temperature",
+        "func": "var msg = { payload: msg.payload[1] / 10.0 };\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 280,
+        "wires": [
+            [
+                "c8329df3e4b713f2",
+                "8ea01fe2d8a6bbc3"
+            ]
+        ]
+    },
+    {
+        "id": "652790f35b277181",
+        "type": "function",
+        "z": "4cc2bbb2caacda4f",
+        "name": "EC",
+        "func": "var msg = { payload: msg.payload[2] / 10.0 };\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 420,
+        "wires": [
+            [
+                "06274eaf73c4b7ae",
+                "bb047eab4337a6fc"
+            ]
+        ]
+    },
+    {
+        "id": "2de40bd22dcbefaf",
+        "type": "debug",
+        "z": "4cc2bbb2caacda4f",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "c8329df3e4b713f2",
+        "type": "debug",
+        "z": "4cc2bbb2caacda4f",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "06274eaf73c4b7ae",
+        "type": "debug",
+        "z": "4cc2bbb2caacda4f",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "a5acf5314fdeebbf",
+        "type": "ui_gauge",
+        "z": "4cc2bbb2caacda4f",
+        "name": "",
+        "group": "39abfb5528d5a638",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Moisture",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 720,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "8ea01fe2d8a6bbc3",
+        "type": "ui_gauge",
+        "z": "4cc2bbb2caacda4f",
+        "name": "",
+        "group": "39abfb5528d5a638",
+        "order": 8,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 730,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "bb047eab4337a6fc",
+        "type": "ui_gauge",
+        "z": "4cc2bbb2caacda4f",
+        "name": "",
+        "group": "39abfb5528d5a638",
+        "order": 9,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "EC",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 710,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "240d0a948d22ed88",
+        "type": "modbus-client",
+        "name": "RS485",
+        "clienttype": "simpleser",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "127.0.0.1",
+        "tcpPort": "502",
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyACM0",
+        "serialType": "RTU",
+        "serialBaudrate": "4800",
+        "serialDatabits": "8",
+        "serialStopbits": "1",
+        "serialParity": "none",
+        "serialConnectionDelay": "100",
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": "1",
+        "commandDelay": "1",
+        "clientTimeout": "1000",
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": "2000",
+        "parallelUnitIdsAllowed": true,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "39abfb5528d5a638",
+        "type": "ui_group",
+        "name": "Sensor",
+        "tab": "83dff1b01786cddc",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "83dff1b01786cddc",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
