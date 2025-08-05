@@ -1,0 +1,1480 @@
+[
+    {
+        "id": "b702bf0b061345e6",
+        "type": "tab",
+        "label": "IRIV Agribox Dashboard",
+        "disabled": true,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "97e036e89b6b957a",
+        "type": "ui_switch",
+        "z": "b702bf0b061345e6",
+        "name": "",
+        "label": "LED0",
+        "tooltip": "",
+        "group": "fedc957f783daecd",
+        "order": 1,
+        "width": 2,
+        "height": 1,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": true,
+        "className": "",
+        "x": 390,
+        "y": 100,
+        "wires": [
+            [
+                "480ed63c80314082"
+            ]
+        ]
+    },
+    {
+        "id": "480ed63c80314082",
+        "type": "rpi-gpio out",
+        "z": "b702bf0b061345e6",
+        "name": "LED0 Output",
+        "pin": "20",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "bcm": true,
+        "x": 610,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "2735b37636bf5988",
+        "type": "ui_switch",
+        "z": "b702bf0b061345e6",
+        "name": "",
+        "label": "LED1",
+        "tooltip": "",
+        "group": "fedc957f783daecd",
+        "order": 4,
+        "width": 2,
+        "height": 1,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 390,
+        "y": 160,
+        "wires": [
+            [
+                "2ec7687131862fdd"
+            ]
+        ]
+    },
+    {
+        "id": "2ec7687131862fdd",
+        "type": "rpi-gpio out",
+        "z": "b702bf0b061345e6",
+        "name": "LED1 Output",
+        "pin": "21",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "bcm": true,
+        "x": 610,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "0bbc27dc2329b3de",
+        "type": "ui_button",
+        "z": "b702bf0b061345e6",
+        "name": "",
+        "group": "fedc957f783daecd",
+        "order": 3,
+        "width": 2,
+        "height": 1,
+        "passthru": false,
+        "label": "Buzzer",
+        "tooltip": "",
+        "color": "black",
+        "bgcolor": "dark green",
+        "className": "",
+        "icon": "volume_up",
+        "payload": "True",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 390,
+        "y": 220,
+        "wires": [
+            [
+                "bdf5b5973e95fdc6"
+            ]
+        ]
+    },
+    {
+        "id": "7c94eaf733699cb0",
+        "type": "rpi-gpio out",
+        "z": "b702bf0b061345e6",
+        "name": "Buzzer Output",
+        "pin": "19",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "bcm": true,
+        "x": 740,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "9196acb580cac74a",
+        "type": "ui_switch",
+        "z": "b702bf0b061345e6",
+        "name": "",
+        "label": "Button",
+        "tooltip": "",
+        "group": "fedc957f783daecd",
+        "order": 6,
+        "width": 2,
+        "height": 1,
+        "passthru": false,
+        "decouple": "true",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "radio_button_checked",
+        "oncolor": "#FFC107",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "radio_button_unchecked",
+        "offcolor": "#44739E",
+        "animate": false,
+        "className": "",
+        "x": 810,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5f224e28b8cdaa27",
+        "type": "rpi-gpio in",
+        "z": "b702bf0b061345e6",
+        "name": "User Button",
+        "pin": "4",
+        "intype": "tri",
+        "debounce": "25",
+        "read": true,
+        "bcm": true,
+        "x": 410,
+        "y": 280,
+        "wires": [
+            [
+                "9c19514580f0de7e"
+            ]
+        ]
+    },
+    {
+        "id": "9c19514580f0de7e",
+        "type": "function",
+        "z": "b702bf0b061345e6",
+        "name": "Invert",
+        "func": "if (msg.payload == 0) {\n    msg.payload = true;\n} else {\n    msg.payload = false;\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 280,
+        "wires": [
+            [
+                "9196acb580cac74a"
+            ]
+        ]
+    },
+    {
+        "id": "f45cd5c56aedbb6f",
+        "type": "ui_text",
+        "z": "b702bf0b061345e6",
+        "group": "fedc957f783daecd",
+        "order": 7,
+        "width": 5,
+        "height": 2,
+        "name": "Button Message",
+        "label": "Press user button for 5 seconds to shutdown IRIV PiControl.",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": true,
+        "font": "",
+        "fontSize": "14",
+        "color": "#000000",
+        "x": 420,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "615d168a6eb0fbaa",
+        "type": "comment",
+        "z": "b702bf0b061345e6",
+        "name": "System Check",
+        "info": "",
+        "x": 410,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "64fc4b855ad66e83",
+        "type": "inject",
+        "z": "b702bf0b061345e6",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 490,
+        "y": 980,
+        "wires": [
+            [
+                "8401a63b0218ee58"
+            ]
+        ]
+    },
+    {
+        "id": "8401a63b0218ee58",
+        "type": "modbus-getter",
+        "z": "b702bf0b061345e6",
+        "name": "Temperature and Humidity Sensor",
+        "showStatusActivities": true,
+        "showErrors": true,
+        "showWarnings": true,
+        "logIOActivities": false,
+        "unitid": "2",
+        "dataType": "HoldingRegister",
+        "adr": "0",
+        "quantity": "2",
+        "server": "240d0a948d22ed88",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 760,
+        "y": 980,
+        "wires": [
+            [
+                "f260898c1e518466",
+                "dc725f32f2c4773b",
+                "db00fcbc7f7d9dc9"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "f260898c1e518466",
+        "type": "function",
+        "z": "b702bf0b061345e6",
+        "name": "Humidity",
+        "func": "var msg = {payload: msg.payload[0]/10.0}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1020,
+        "y": 900,
+        "wires": [
+            [
+                "8afd62c58cc605b8",
+                "5181c4811480b341",
+                "e2b1c7740c8de8e0"
+            ]
+        ]
+    },
+    {
+        "id": "dc725f32f2c4773b",
+        "type": "function",
+        "z": "b702bf0b061345e6",
+        "name": "Temperature",
+        "func": "var msg = {payload: msg.payload[1]/10.0}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1030,
+        "y": 1060,
+        "wires": [
+            [
+                "9ded23d4bf4051a1",
+                "5f75646a9f56bfb3",
+                "06f4324a9c84b1b5"
+            ]
+        ]
+    },
+    {
+        "id": "8afd62c58cc605b8",
+        "type": "debug",
+        "z": "b702bf0b061345e6",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1240,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "5181c4811480b341",
+        "type": "ui_gauge",
+        "z": "b702bf0b061345e6",
+        "name": "",
+        "group": "7bb4c7629888a7e1",
+        "order": 3,
+        "width": 5,
+        "height": 4,
+        "gtype": "gage",
+        "title": "Humidity",
+        "label": "g/Kg",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1240,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "5f75646a9f56bfb3",
+        "type": "debug",
+        "z": "b702bf0b061345e6",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1240,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "9ded23d4bf4051a1",
+        "type": "ui_gauge",
+        "z": "b702bf0b061345e6",
+        "name": "",
+        "group": "7bb4c7629888a7e1",
+        "order": 1,
+        "width": 5,
+        "height": 4,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "C°",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "120",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1250,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "0a969c63490440ef",
+        "type": "comment",
+        "z": "b702bf0b061345e6",
+        "name": "Sensors",
+        "info": "",
+        "x": 400,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "760c6cb0cbd7c0a6",
+        "type": "comment",
+        "z": "b702bf0b061345e6",
+        "name": "Controls",
+        "info": "",
+        "x": 400,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "b3ce42465e223bea",
+        "type": "ui_switch",
+        "z": "b702bf0b061345e6",
+        "name": "",
+        "label": "Pump 1 (DO0)",
+        "tooltip": "",
+        "group": "29cf6b9a95998e72",
+        "order": 2,
+        "width": 5,
+        "height": 1,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 420,
+        "y": 680,
+        "wires": [
+            [
+                "04d6aa6188e8ed8e"
+            ]
+        ]
+    },
+    {
+        "id": "04d6aa6188e8ed8e",
+        "type": "rpi-gpio out",
+        "z": "b702bf0b061345e6",
+        "name": "DO0 Output",
+        "pin": "23",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "bcm": true,
+        "x": 670,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "5315e95257ac3ac3",
+        "type": "ui_switch",
+        "z": "b702bf0b061345e6",
+        "name": "",
+        "label": "Pump 2 (DO1)",
+        "tooltip": "",
+        "group": "29cf6b9a95998e72",
+        "order": 1,
+        "width": 5,
+        "height": 1,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 420,
+        "y": 740,
+        "wires": [
+            [
+                "0df43a0124c22d91"
+            ]
+        ]
+    },
+    {
+        "id": "0df43a0124c22d91",
+        "type": "rpi-gpio out",
+        "z": "b702bf0b061345e6",
+        "name": "DO1 Output",
+        "pin": "24",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "bcm": true,
+        "x": 670,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "412e9dfe3e8b82d1",
+        "type": "ui_button",
+        "z": "b702bf0b061345e6",
+        "name": "",
+        "group": "fedc957f783daecd",
+        "order": 8,
+        "width": 2,
+        "height": 1,
+        "passthru": false,
+        "label": "Shutoff",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "#ff0000",
+        "className": "",
+        "icon": "power_settings_new",
+        "payload": "True",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 1080,
+        "y": 140,
+        "wires": [
+            [
+                "7fe1d679d7b3f994"
+            ]
+        ]
+    },
+    {
+        "id": "d50412c998c23897",
+        "type": "ui_button",
+        "z": "b702bf0b061345e6",
+        "name": "",
+        "group": "fedc957f783daecd",
+        "order": 10,
+        "width": 2,
+        "height": 1,
+        "passthru": false,
+        "label": "Reboot",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "#FFC107",
+        "className": "",
+        "icon": "refresh",
+        "payload": "True",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 1080,
+        "y": 200,
+        "wires": [
+            [
+                "a7d13d8d458fcfc4"
+            ]
+        ]
+    },
+    {
+        "id": "7fe1d679d7b3f994",
+        "type": "link out",
+        "z": "b702bf0b061345e6",
+        "name": "Shutdown",
+        "mode": "link",
+        "links": [
+            "56c92a79f05d255f"
+        ],
+        "x": 1245,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "a7d13d8d458fcfc4",
+        "type": "link out",
+        "z": "b702bf0b061345e6",
+        "name": "Reboot",
+        "mode": "link",
+        "links": [
+            "08f5d4861be16b40"
+        ],
+        "x": 1245,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "e2b1c7740c8de8e0",
+        "type": "ui_chart",
+        "z": "b702bf0b061345e6",
+        "name": "",
+        "group": "7bb4c7629888a7e1",
+        "order": 4,
+        "width": 5,
+        "height": 4,
+        "label": "Humidity",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#63a0d9",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1240,
+        "y": 900,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "06f4324a9c84b1b5",
+        "type": "ui_chart",
+        "z": "b702bf0b061345e6",
+        "name": "",
+        "group": "7bb4c7629888a7e1",
+        "order": 2,
+        "width": 5,
+        "height": 4,
+        "label": "Temperature",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "120",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#63a0d9",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1250,
+        "y": 1060,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ce3ca3e8f62334d5",
+        "type": "rpi-gpio in",
+        "z": "b702bf0b061345e6",
+        "name": "Activiation Button",
+        "pin": "13",
+        "intype": "tri",
+        "debounce": "25",
+        "read": false,
+        "bcm": true,
+        "x": 440,
+        "y": 440,
+        "wires": [
+            [
+                "9a568cdf27fab4d9"
+            ]
+        ]
+    },
+    {
+        "id": "5fab3ece8ce17c41",
+        "type": "ui_switch",
+        "z": "b702bf0b061345e6",
+        "name": "",
+        "label": "AC Status",
+        "tooltip": "",
+        "group": "3774ff7477dba12f",
+        "order": 2,
+        "width": 5,
+        "height": 1,
+        "passthru": false,
+        "decouple": "true",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "radio_button_checked",
+        "oncolor": "#FFC107",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "radio_button_unchecked",
+        "offcolor": "#44739E",
+        "animate": false,
+        "className": "",
+        "x": 1200,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9a568cdf27fab4d9",
+        "type": "switch",
+        "z": "b702bf0b061345e6",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 650,
+        "y": 500,
+        "wires": [
+            [
+                "7d36c313724e95e0"
+            ]
+        ]
+    },
+    {
+        "id": "7d36c313724e95e0",
+        "type": "switch",
+        "z": "b702bf0b061345e6",
+        "name": "",
+        "property": "state",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 850,
+        "y": 500,
+        "wires": [
+            [
+                "4466a5cc95de6212"
+            ],
+            [
+                "289e475e600c2f9e"
+            ]
+        ]
+    },
+    {
+        "id": "4466a5cc95de6212",
+        "type": "change",
+        "z": "b702bf0b061345e6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "false",
+                "tot": "bool"
+            },
+            {
+                "t": "set",
+                "p": "state",
+                "pt": "global",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1020,
+        "y": 440,
+        "wires": [
+            [
+                "5fab3ece8ce17c41",
+                "3d830019eec04417"
+            ]
+        ]
+    },
+    {
+        "id": "289e475e600c2f9e",
+        "type": "change",
+        "z": "b702bf0b061345e6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            },
+            {
+                "t": "set",
+                "p": "state",
+                "pt": "global",
+                "to": "1",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1020,
+        "y": 560,
+        "wires": [
+            [
+                "5fab3ece8ce17c41",
+                "3d830019eec04417"
+            ]
+        ]
+    },
+    {
+        "id": "c8b66e561b42572c",
+        "type": "ui_button",
+        "z": "b702bf0b061345e6",
+        "name": "",
+        "group": "3774ff7477dba12f",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "AC socket",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "orange",
+        "className": "",
+        "icon": "polymer",
+        "payload": "1",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 450,
+        "y": 560,
+        "wires": [
+            [
+                "9a568cdf27fab4d9"
+            ]
+        ]
+    },
+    {
+        "id": "97f91dab9d2aad13",
+        "type": "modbus-getter",
+        "z": "b702bf0b061345e6",
+        "name": "3 in 1 Soil Sensor",
+        "showStatusActivities": true,
+        "showErrors": true,
+        "showWarnings": true,
+        "logIOActivities": false,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "0",
+        "quantity": "3",
+        "server": "240d0a948d22ed88",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 670,
+        "y": 1440,
+        "wires": [
+            [
+                "0093933b683cf58d",
+                "a4c6b09947e04e0c",
+                "48cc3d14e2804997"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "0093933b683cf58d",
+        "type": "function",
+        "z": "b702bf0b061345e6",
+        "name": "Moisture",
+        "func": "var msg = { payload: msg.payload[0] / 10}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 1500,
+        "wires": [
+            [
+                "0cf36ece502936b2",
+                "c22f6e643db3bb71",
+                "f9b20cac2b0115a4"
+            ]
+        ]
+    },
+    {
+        "id": "0cf36ece502936b2",
+        "type": "debug",
+        "z": "b702bf0b061345e6",
+        "name": "debug 18",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1080,
+        "y": 1540,
+        "wires": []
+    },
+    {
+        "id": "a4c6b09947e04e0c",
+        "type": "function",
+        "z": "b702bf0b061345e6",
+        "name": "EC",
+        "func": "var msg = { payload: msg.payload[2] / 10.0};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 870,
+        "y": 1260,
+        "wires": [
+            [
+                "2cb636960b39a57b",
+                "77fc08487da235be",
+                "19132447669f4cdc"
+            ]
+        ]
+    },
+    {
+        "id": "2cb636960b39a57b",
+        "type": "debug",
+        "z": "b702bf0b061345e6",
+        "name": "debug 20",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1080,
+        "y": 1260,
+        "wires": []
+    },
+    {
+        "id": "48cc3d14e2804997",
+        "type": "function",
+        "z": "b702bf0b061345e6",
+        "name": "Temperature",
+        "func": "var msg = { payload: msg.payload[1] / 10.0 };\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 870,
+        "y": 1360,
+        "wires": [
+            [
+                "2779e7458a2df43b",
+                "e6493a7f9063f6c2",
+                "55b2724ffca523d5"
+            ]
+        ]
+    },
+    {
+        "id": "2779e7458a2df43b",
+        "type": "debug",
+        "z": "b702bf0b061345e6",
+        "name": "debug 21",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1080,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "db00fcbc7f7d9dc9",
+        "type": "delay",
+        "z": "b702bf0b061345e6",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "2",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 460,
+        "y": 1440,
+        "wires": [
+            [
+                "97f91dab9d2aad13"
+            ]
+        ]
+    },
+    {
+        "id": "c22f6e643db3bb71",
+        "type": "ui_gauge",
+        "z": "b702bf0b061345e6",
+        "name": "",
+        "group": "7bb4c7629888a7e1",
+        "order": 11,
+        "width": 5,
+        "height": 4,
+        "gtype": "donut",
+        "title": "Moisture",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1080,
+        "y": 1460,
+        "wires": []
+    },
+    {
+        "id": "f9b20cac2b0115a4",
+        "type": "ui_chart",
+        "z": "b702bf0b061345e6",
+        "name": "",
+        "group": "7bb4c7629888a7e1",
+        "order": 12,
+        "width": 5,
+        "height": 4,
+        "label": "Moisture",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#63a0d9",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1080,
+        "y": 1500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "77fc08487da235be",
+        "type": "ui_gauge",
+        "z": "b702bf0b061345e6",
+        "name": "",
+        "group": "7bb4c7629888a7e1",
+        "order": 9,
+        "width": 5,
+        "height": 4,
+        "gtype": "donut",
+        "title": "EC",
+        "label": "mS/cm",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "10",
+        "colors": [
+            "#254cc1",
+            "#0bfeee",
+            "#ed0707"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1070,
+        "y": 1180,
+        "wires": []
+    },
+    {
+        "id": "19132447669f4cdc",
+        "type": "ui_chart",
+        "z": "b702bf0b061345e6",
+        "name": "",
+        "group": "7bb4c7629888a7e1",
+        "order": 10,
+        "width": 5,
+        "height": 4,
+        "label": "EC",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "10",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#63a0d9",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1070,
+        "y": 1220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e6493a7f9063f6c2",
+        "type": "ui_gauge",
+        "z": "b702bf0b061345e6",
+        "name": "",
+        "group": "7bb4c7629888a7e1",
+        "order": 5,
+        "width": 5,
+        "height": 4,
+        "gtype": "donut",
+        "title": "Temperature",
+        "label": "C°",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "500",
+        "colors": [
+            "#254cc1",
+            "#0bfeee",
+            "#ed0707"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1090,
+        "y": 1320,
+        "wires": []
+    },
+    {
+        "id": "55b2724ffca523d5",
+        "type": "ui_chart",
+        "z": "b702bf0b061345e6",
+        "name": "",
+        "group": "7bb4c7629888a7e1",
+        "order": 6,
+        "width": 5,
+        "height": 4,
+        "label": "Temperature",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "500",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#63a0d9",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1090,
+        "y": 1360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3d830019eec04417",
+        "type": "rpi-gpio out",
+        "z": "b702bf0b061345e6",
+        "name": "DO2 Output",
+        "pin": "25",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "bcm": true,
+        "x": 1430,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "bdf5b5973e95fdc6",
+        "type": "trigger",
+        "z": "b702bf0b061345e6",
+        "name": "On for 250ms",
+        "op1": "1",
+        "op2": "0",
+        "op1type": "str",
+        "op2type": "str",
+        "duration": "250",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "ms",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 560,
+        "y": 220,
+        "wires": [
+            [
+                "7c94eaf733699cb0"
+            ]
+        ]
+    },
+    {
+        "id": "8fc8e69608d8fa07",
+        "type": "ui_spacer",
+        "z": "b702bf0b061345e6",
+        "name": "spacer",
+        "group": "fedc957f783daecd",
+        "order": 2,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "71532908b55a050b",
+        "type": "ui_spacer",
+        "z": "b702bf0b061345e6",
+        "name": "spacer",
+        "group": "fedc957f783daecd",
+        "order": 5,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "9a8c1476848f1b40",
+        "type": "ui_spacer",
+        "z": "b702bf0b061345e6",
+        "name": "spacer",
+        "group": "fedc957f783daecd",
+        "order": 9,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "fedc957f783daecd",
+        "type": "ui_group",
+        "name": "System Check",
+        "tab": "e035661b41b84d19",
+        "order": 4,
+        "disp": true,
+        "width": 5,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "240d0a948d22ed88",
+        "type": "modbus-client",
+        "name": "RS485",
+        "clienttype": "simpleser",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "127.0.0.1",
+        "tcpPort": "502",
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyACM0",
+        "serialType": "RTU",
+        "serialBaudrate": "4800",
+        "serialDatabits": "8",
+        "serialStopbits": "1",
+        "serialParity": "none",
+        "serialConnectionDelay": "100",
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": "1",
+        "commandDelay": "1",
+        "clientTimeout": "1000",
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": "2000",
+        "parallelUnitIdsAllowed": true,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "7bb4c7629888a7e1",
+        "type": "ui_group",
+        "name": "Sensors",
+        "tab": "e035661b41b84d19",
+        "order": 2,
+        "disp": true,
+        "width": 20,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "29cf6b9a95998e72",
+        "type": "ui_group",
+        "name": "Pumps Control",
+        "tab": "e035661b41b84d19",
+        "order": 1,
+        "disp": true,
+        "width": 5,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "3774ff7477dba12f",
+        "type": "ui_group",
+        "name": "AC Socket",
+        "tab": "e035661b41b84d19",
+        "order": 3,
+        "disp": true,
+        "width": 5,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "e035661b41b84d19",
+        "type": "ui_tab",
+        "name": "Agriculture Controls",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    }
+]
