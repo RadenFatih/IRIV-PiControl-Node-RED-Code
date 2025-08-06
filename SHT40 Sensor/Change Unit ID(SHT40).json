@@ -1,0 +1,89 @@
+[
+    {
+        "id": "d3603d83df84e1e8",
+        "type": "tab",
+        "label": "Change Unit ID (SHT40)",
+        "disabled": true,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "ab7af6820c3dc0c2",
+        "type": "serial out",
+        "z": "d3603d83df84e1e8",
+        "name": "",
+        "serial": "070350d8b3aeee72",
+        "x": 500,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "d1714f3830152811",
+        "type": "inject",
+        "z": "d3603d83df84e1e8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 340,
+        "wires": [
+            [
+                "049a7b98e560aa63"
+            ]
+        ]
+    },
+    {
+        "id": "049a7b98e560aa63",
+        "type": "function",
+        "z": "d3603d83df84e1e8",
+        "name": "change unit id",
+        "func": "function calculateCRC16(buffer) {\n    let crc = 0xFFFF;\n    for (let i = 0; i < buffer.length; i++) {\n        crc ^= buffer[i];\n        for (let j = 0; j < 8; j++) {\n            if (crc & 0x0001) {\n                crc = (crc >> 1) ^ 0xA001;\n            } else {\n                crc = crc >> 1;\n            }\n        }\n    }\n    return crc;\n}\n\n// ----- Configuration -----\nlet current_id = 0x01;        // Current Unit ID\nlet register_address = 0x0101; // Slave address register (from datasheet)\nlet new_unit_id = 0x0002;      // New Unit ID\n\n// ----- Build Modbus RTU frame -----\nlet buf = Buffer.from([\n    current_id,        // Current device address\n    0x06,              // Function code: Write single register\n    (register_address >> 8) & 0xFF,\n    register_address & 0xFF,\n    (new_unit_id >> 8) & 0xFF,\n    new_unit_id & 0xFF\n]);\n\nlet crc = calculateCRC16(buf);\nlet crcLow = crc & 0xFF;\nlet crcHigh = (crc >> 8) & 0xFF;\n\nmsg.payload = Buffer.concat([buf, Buffer.from([crcLow, crcHigh])]);\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 340,
+        "wires": [
+            [
+                "ab7af6820c3dc0c2"
+            ]
+        ]
+    },
+    {
+        "id": "070350d8b3aeee72",
+        "type": "serial-port",
+        "name": "RS485",
+        "serialport": "/dev/ttyACM0",
+        "serialbaud": "9600",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    }
+]
