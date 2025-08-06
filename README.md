@@ -4,7 +4,7 @@ Welcome to this Github repo. To import the json code into the Node-RED tab, just
 
 1. Open Node-RED
 
-2. Head over to left-top corner navigation bar and click 'import'.
+2. Head over to top-right corner navigation bar icon and click 'import'.
   <img width="375" height="698" alt="image" src="https://github.com/user-attachments/assets/9290eccd-68fa-4e56-9171-0093a74ce326"/>
 
 3. Click 'select a file to import'.
