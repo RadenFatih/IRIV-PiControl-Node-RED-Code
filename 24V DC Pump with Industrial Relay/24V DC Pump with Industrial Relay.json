@@ -1,0 +1,78 @@
+[
+    {
+        "id": "e43edb7dbfd91902",
+        "type": "tab",
+        "label": "24V DC Pump with Industrial Relay",
+        "disabled": true,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "3cb0f65704c91471",
+        "type": "ui_switch",
+        "z": "e43edb7dbfd91902",
+        "name": "",
+        "label": "DO 0",
+        "tooltip": "",
+        "group": "39abfb5528d5a638",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 230,
+        "y": 260,
+        "wires": [
+            [
+                "88ac00a0bc6e9b6e"
+            ]
+        ]
+    },
+    {
+        "id": "88ac00a0bc6e9b6e",
+        "type": "rpi-gpio out",
+        "z": "e43edb7dbfd91902",
+        "name": "",
+        "pin": "23",
+        "set": "",
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "bcm": true,
+        "x": 420,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "39abfb5528d5a638",
+        "type": "ui_group",
+        "name": "Sensor",
+        "tab": "83dff1b01786cddc",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "83dff1b01786cddc",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
