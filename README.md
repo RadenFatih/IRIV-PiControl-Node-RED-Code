@@ -14,6 +14,6 @@ Welcome to this Github repo. To import the json code into the Node-RED tab, just
   <img width="767" height="538" alt="image" src="https://github.com/user-attachments/assets/baca706d-b5e9-4fa8-b5ed-4fad093a66ef"/>
 
 5. A new Node-RED flow will appear at the top navigation bar.
-   <img width="1912" height="899" alt="image" src="https://github.com/user-attachments/assets/08724c1c-5d65-41f4-b5d2-aa372e135066"/>
+  <img width="1912" height="899" alt="image" src="https://github.com/user-attachments/assets/08724c1c-5d65-41f4-b5d2-aa372e135066"/>
 
 
