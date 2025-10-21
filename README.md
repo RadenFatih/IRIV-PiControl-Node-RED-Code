@@ -1,6 +1,6 @@
 # IRIV-PiControl-Node-RED-Code
 
-Welcome to this Github repository. To import the json code into the Node-RED tab, just follow this instruction.
+Welcome to this Github repo. To import the json code into the Node-RED tab, just follow this instruction.
 
 1. Open Node-RED
 
